@@ -1,26 +1,45 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {BrowserRouter as Router, Redirect, Route, Switch} from 'react-router-dom';
+import LoginPage from "./LoginPage";
+import GiftPage from "./GiftPage";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-const App: React.FC = () => {
+// Все что ниже касается вопросов роутинга т.к. страниц у нас больше одной.
+
+const routes = [
+    {
+        path: "/home",
+        component: LoginPage
+    },
+    {
+        path: "/gift",
+        component: GiftPage
+    },
+  ];
+
+export default function AuthExample() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <Router>
+        <div>
+          <Switch>
+            {routes.map((route, i) => (
+                <RouteWithSubRoutes key={i} {...route} />
+            ))}
+          </Switch>
+        </div>
+      </Router>
   );
 }
 
-export default App;
+function RouteWithSubRoutes(route: any, extraProps = {}) {
+  return (
+      <Route
+          exact={route.exact}
+          path={route.path}
+          render={props => route.render
+              ? route.render(props)
+              : <route.component {...props} {...extraProps} route={route}/>}
+          strict={route.strict}/>
+  );
+}
