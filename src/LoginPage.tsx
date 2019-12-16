@@ -1,5 +1,6 @@
 import React from 'react';
 import {RouteComponentProps, withRouter} from "react-router-dom";
+import { Link } from 'react-router-dom'
 import GiftPage from "./GiftPage";
 
 // мы используем react-router и хотим иметь доступ к параметрам пути
@@ -10,9 +11,9 @@ interface LoginPageProps extends RouteComponentProps {
 
 interface LoginPageState {
 
-    inputLogin: string;
+    inputName: string;
 
-    inputPassword: string;
+    inputEmail: string;
 
 }
 
@@ -22,20 +23,20 @@ class LoginPage extends React.Component<LoginPageProps, LoginPageState> {
     constructor(props: Readonly<LoginPageProps>) {
         super(props);
         this.state = {
-            inputLogin: "",
-            inputPassword: ""
+            inputName: "",
+            inputEmail: ""
         };
     }
 
-    changeLogin(newLogin: string) {
+    changeName(newName: string) {
         this.setState({
-            inputLogin: newLogin
+            inputName: newName
         });
     }
 
-    changePassword(newPassword: string) {
+    changeEmail(newEmail: string) {
         this.setState({
-            inputPassword: newPassword
+            inputEmail: newEmail
         });
     }
 
@@ -66,7 +67,7 @@ class LoginPage extends React.Component<LoginPageProps, LoginPageState> {
                 <img className="mb-3" src={require('./santa-claus.png')} width="150" height="150"></img>
         <label htmlFor="inputEmail" className="sr-only">Name</label>
 
-        <input onChange={event => this.changeLogin(event.target.value)}
+        <input onChange={event => this.changeName(event.target.value)}
         className="form-control"
         placeholder="Name"
         required={true}/>
@@ -74,14 +75,16 @@ class LoginPage extends React.Component<LoginPageProps, LoginPageState> {
         <label htmlFor="inputPassword" className="sr-only">Email</label>
 
             <input onChange={event => {
-            this.changePassword(event.target.value)
+            this.changeEmail(event.target.value)
         }} type="inputEmail" id="email" className="form-control"
         placeholder="Email"
         required={true}/>
-        <button
+                <Link to={{ pathname: '/gift', state: { inputName: this.state.inputName, inputEmail: this.state.inputEmail} }}>
+                    <button
             // onClick={() => this.login()}
-        className="btn btn-lg btn-primary btn-block" type="button">Continue
-            </button>
+                        className="btn btn-lg btn-primary btn-block" type="button">Continue
+                    </button>
+                </Link>
             </div>
             </div>
     )

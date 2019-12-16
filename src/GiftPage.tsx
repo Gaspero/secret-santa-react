@@ -10,9 +10,9 @@ interface GiftPageProps extends RouteComponentProps {
 
 interface GiftPageState {
 
-    inputLogin: string;
+    inputName: string;
 
-    inputPassword: string;
+    inputEmail: string;
 
 }
 
@@ -22,8 +22,8 @@ class GiftPage extends React.Component<GiftPageProps, GiftPageState> {
     constructor(props: Readonly<GiftPageProps>) {
         super(props);
         this.state = {
-            inputLogin: "",
-            inputPassword: ""
+            inputName: props.location.state.inputName,
+            inputEmail: props.location.state.inputEmail
         };
     }
 
@@ -32,7 +32,7 @@ class GiftPage extends React.Component<GiftPageProps, GiftPageState> {
     render(): React.ReactNode {
         return (
             <div>
-                <h1 className="text-center">WHAT YOU WANNA GET FOR CRISTMAS?</h1>
+                <h1 className="text-center">WHAT YOU WANNA GET FOR CRISTMAS, {this.state.inputName.toUpperCase()}?</h1>
 
                 <div className="container-sm col-md-4">
                 <table className="table">
