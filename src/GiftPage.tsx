@@ -25,11 +25,13 @@ class GiftPage extends React.Component<GiftPageProps, GiftPageState> {
 
     constructor(props: Readonly<GiftPageProps>) {
         super(props);
+        // TODO: add exception when page is called directly and props.location.state were not passed
         this.state = {
             inputName: props.location.state.inputName,
             inputEmail: props.location.state.inputEmail,
             gifts: []
         };
+
         dataService.getGifts().then(value => {
             this.setState({
                 gifts: value
@@ -38,15 +40,13 @@ class GiftPage extends React.Component<GiftPageProps, GiftPageState> {
 
     }
 
-    // TODO: вынести gift в отдельный компонент. получать доступный перечень gifts с псевдо-сервера
-
     render(): React.ReactNode {
         return (
             <div>
-                <h1 className="text-center">WHAT YOU WANNA GET FOR CRISTMAS, {this.state.inputName.toUpperCase()}?</h1>
+                <h1 className="text-center">WHAT YOU WANNA GET FOR CHRISTMAS, {this.state.inputName.toUpperCase()}?</h1>
 
                 <div className="container-sm col-md-4">
-                <table className="table">
+                <table className="table table-hover">
                     <tbody>
                     {this.state.gifts.map(gift => {
                         return (

@@ -23,10 +23,13 @@ class GiftItem extends React.Component<GiftItemProps, GiftItemState> {
         super(props);
     }
 
+    routeChange() {
+        console.log('Pushed');
+    }
 
     render(): React.ReactNode {
         return (
-            <tr>
+            <tr onClick={this.routeChange}>
                 <th scope="row"></th>
                 <td className="text-align-custom">
                     <span>{this.props.name}</span>
