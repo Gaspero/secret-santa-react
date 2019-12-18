@@ -1,0 +1,34 @@
+{
+  "gifts": [
+    {
+      "id": 1,
+      "name": "Blanket",
+      "url": "./blanket.png"
+    },
+    {
+      "id": 2,
+      "name": "Book",
+      "url": "./books.png"
+    },
+    {
+      "id": 3,
+      "name": "Candle",
+      "url": "./candle.png"
+    },
+    {
+      "id": 4,
+      "name": "Sweater",
+      "url": "./christmas-sweater.png"
+    },
+    {
+      "id": 5,
+      "name": "Hoodie",
+      "url": "./hoodie.png"
+    },
+    {
+      "id": 6,
+      "name": "Hot tea",
+      "url": "./hot-tea.png"
+    }
+  ]
+}

@@ -1,6 +1,8 @@
 import React from 'react';
 import {RouteComponentProps, withRouter} from "react-router-dom";
 import {BrowserRouter as Router, Redirect, Route, Switch} from 'react-router-dom';
+import dataService, {Gift} from "./DataService";
+import GiftItem from "./GiftItem";
 
 // мы используем react-router и хотим иметь доступ к параметрам пути
 // поэтому наследуемся от RouteComponentProps
@@ -14,6 +16,8 @@ interface GiftPageState {
 
     inputEmail: string;
 
+    gifts: Gift[];
+
 }
 
 class GiftPage extends React.Component<GiftPageProps, GiftPageState> {
@@ -23,8 +27,15 @@ class GiftPage extends React.Component<GiftPageProps, GiftPageState> {
         super(props);
         this.state = {
             inputName: props.location.state.inputName,
-            inputEmail: props.location.state.inputEmail
+            inputEmail: props.location.state.inputEmail,
+            gifts: []
         };
+        dataService.getGifts().then(value => {
+            this.setState({
+                gifts: value
+            });
+        });
+
     }
 
     // TODO: вынести gift в отдельный компонент. получать доступный перечень gifts с псевдо-сервера
@@ -37,24 +48,11 @@ class GiftPage extends React.Component<GiftPageProps, GiftPageState> {
                 <div className="container-sm col-md-4">
                 <table className="table">
                     <tbody>
-                    <tr>
-                        <th scope="row"></th>
-                        <td className="text-align-custom">
-                            <span>A gift #1</span>
-                        </td>
-                        <td>
-                            <img src={require('./blanket.png')} alt="" className="card-img-custom"></img>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row"></th>
-                        <td className="text-align-custom">
-                            <span>A gift #1</span>
-                        </td>
-                        <td>
-                            <img src={require('./blanket.png')} alt="" className="card-img-custom"></img>
-                        </td>
-                    </tr>
+                    {this.state.gifts.map(gift => {
+                        return (
+                            <GiftItem id={gift.id} name={gift.name} url={gift.url} />
+                        )
+                    })}
                     </tbody>
                 </table>
                 </div>
