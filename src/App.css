@@ -60,13 +60,25 @@ body {
   display: block;
 }
 
+.card-img-custom-big {
+    height: 240px;
+    width: 240px;
+    padding: 10px;
+    margin: auto;
+    display: block;
+}
+
 .text-align-custom {
   vertical-align: middle!important;
   font-size: 1.25rem;
 }
 
-table tr {
-  border: 1px solid #dee2e6;
+/*table tr {*/
+  /*border: 1px solid #dee2e6;*/
+/*}*/
+
+.tr-boardered {
+    border: 1px solid #dee2e6;
 }
 
 .table {

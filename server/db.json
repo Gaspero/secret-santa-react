@@ -1,34 +1,54 @@
 {
   "gifts": [
     {
-      "id": 1,
+      "id": 0,
       "name": "Blanket",
       "url": "./blanket.png"
     },
     {
-      "id": 2,
+      "id": 1,
       "name": "Book",
       "url": "./books.png"
     },
     {
-      "id": 3,
+      "id": 2,
       "name": "Candle",
       "url": "./candle.png"
     },
     {
-      "id": 4,
+      "id": 3,
       "name": "Sweater",
       "url": "./christmas-sweater.png"
     },
     {
-      "id": 5,
+      "id": 4,
       "name": "Hoodie",
       "url": "./hoodie.png"
     },
     {
-      "id": 6,
+      "id": 5,
       "name": "Hot tea",
       "url": "./hot-tea.png"
+    }
+  ],
+  "users": [
+    {
+      "id": 0,
+      "name": "Anrew",
+      "giftId": 0,
+      "secretSantaId": 1,
+      "receiverId": null
+    },
+    {
+      "name": "Anna",
+      "id": 1
+    },
+    {
+      "id": 2,
+      "name": "Kate",
+      "giftId": 2,
+      "secretSantaId": 1234567890,
+      "receiverId": 1
     }
   ]
 }

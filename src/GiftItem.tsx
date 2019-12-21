@@ -29,7 +29,7 @@ class GiftItem extends React.Component<GiftItemProps, GiftItemState> {
 
     render(): React.ReactNode {
         return (
-            <tr onClick={this.routeChange}>
+            <tr onClick={this.routeChange} className="tr-boardered">
                 <th scope="row"></th>
                 <td className="text-align-custom">
                     <span>{this.props.name}</span>

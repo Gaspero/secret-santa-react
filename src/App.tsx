@@ -4,6 +4,7 @@ import {BrowserRouter as Router, Redirect, Route, Switch} from 'react-router-dom
 import LoginPage from "./LoginPage";
 import GiftPage from "./GiftPage";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import FinalPage from "./FinalPage";
 
 // Все что ниже касается вопросов роутинга т.к. страниц у нас больше одной.
 
@@ -15,6 +16,10 @@ const routes = [
     {
         path: "/gift",
         component: GiftPage
+    },
+    {
+        path: "/final",
+        component: FinalPage
     },
   ];
 
