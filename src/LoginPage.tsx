@@ -1,7 +1,6 @@
 import React from 'react';
 import {RouteComponentProps, withRouter} from "react-router-dom";
 import { Link } from 'react-router-dom'
-import GiftPage from "./GiftPage";
 
 // мы используем react-router и хотим иметь доступ к параметрам пути
 // поэтому наследуемся от RouteComponentProps
@@ -40,26 +39,6 @@ class LoginPage extends React.Component<LoginPageProps, LoginPageState> {
         });
     }
 
-// TODO: сделать функцию для перехода на следующий шаг (редирект) здесь, в примере функция, проверяющая авторизацию - не наша история
-
-    // async login() {
-    //     // сохраняем всё это, чтобы после авторизации перейти на нужную страницу
-    //     let history = this.props.history;
-    //     let location = this.props.location;
-    //     let {from} = location.state || {from: {pathname: "/"}};
-    //
-    //     // пытаемся авторизоваться
-    //     await dataService.login(this.state.inputLogin, this.state.inputPassword);
-    //
-    //     if (dataService.isUserAuthorized()) {
-    //         // авторизовались, переходим на страницу
-    //         history.replace(from);
-    //         return;
-    //     } else {
-    //         alert("Not OK!");
-    //     }
-    // }
-
     render(): React.ReactNode {
         return (
             <div>
@@ -93,4 +72,3 @@ class LoginPage extends React.Component<LoginPageProps, LoginPageState> {
 };
 
 export default withRouter(LoginPage);
-// export default LoginPage;

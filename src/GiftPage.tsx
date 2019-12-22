@@ -1,6 +1,5 @@
 import React from 'react';
 import {RouteComponentProps, withRouter} from "react-router-dom";
-import {BrowserRouter as Router, Redirect, Route, Switch} from 'react-router-dom';
 import dataService, {Gift} from "./DataService";
 import GiftItem from "./GiftItem";
 
@@ -38,6 +37,13 @@ class GiftPage extends React.Component<GiftPageProps, GiftPageState> {
             });
         });
 
+        this.routeChange = this.routeChange.bind(this)
+
+    }
+
+    routeChange(giftId: number) {
+        this.props.history.push('/final', { inputName: this.state.inputName, inputEmail: this.state.inputEmail, desiredGiftId: giftId});
+        console.log('Pushed');
     }
 
     render(): React.ReactNode {
@@ -47,13 +53,13 @@ class GiftPage extends React.Component<GiftPageProps, GiftPageState> {
 
                 <div className="container-sm col-md-4">
                 <table className="table table-hover">
-                    <tbody>
                     {this.state.gifts.map(gift => {
                         return (
-                            <GiftItem id={gift.id} name={gift.name} url={gift.url} />
+                            <tbody onClick={() => this.routeChange(gift.id)}>
+                                <GiftItem id={gift.id} name={gift.name} url={gift.url} />
+                            </tbody>
                         )
                     })}
-                    </tbody>
                 </table>
                 </div>
 
@@ -67,4 +73,3 @@ class GiftPage extends React.Component<GiftPageProps, GiftPageState> {
 };
 
 export default withRouter(GiftPage);
-// export default GiftPage;

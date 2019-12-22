@@ -25,11 +25,11 @@ class FinalPage extends React.Component<FinalPageProps, FinalPageState> {
 
     constructor(props: Readonly<FinalPageProps>) {
         super(props);
-
+        // TODO: add exception when page is called directly and props.location.state were not passed
         this.state = {
-            inputName: "Ivan",
-            inputEmail: "Ivan@mail.ru",
-            desiredGiftId: 2,
+            inputName: props.location.state.inputName,
+            inputEmail: props.location.state.inputEmail,
+            desiredGiftId: props.location.state.desiredGiftId,
             receiverDesiredGift: new Gift(0, '', ''),
             receiver: new User(0, '', 0, 0),
             currentUser: new User(0, '', 0, 0)

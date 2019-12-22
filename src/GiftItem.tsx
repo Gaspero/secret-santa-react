@@ -1,5 +1,7 @@
 import React from 'react';
 import {RouteComponentProps, withRouter} from "react-router-dom";
+import history from 'history';
+
 
 // мы используем react-router и хотим иметь доступ к параметрам пути
 // поэтому наследуемся от RouteComponentProps
@@ -23,13 +25,14 @@ class GiftItem extends React.Component<GiftItemProps, GiftItemState> {
         super(props);
     }
 
-    routeChange() {
-        console.log('Pushed');
-    }
+    // routeChange() {
+    //     this.props.history.push('/');
+    //     console.log('Pushed');
+    // }
 
     render(): React.ReactNode {
         return (
-            <tr onClick={this.routeChange} className="tr-boardered">
+            <tr className="tr-boardered">
                 <th scope="row"></th>
                 <td className="text-align-custom">
                     <span>{this.props.name}</span>
