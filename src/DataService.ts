@@ -1,7 +1,14 @@
-export interface Gift {
+export class Gift {
     id: number;
     name: string;
     url: string;
+
+    constructor(id: number, name: string, url: string) {
+        this.id = id;
+        this.name = name;
+        this.url = url;
+    }
+
 }
 
 export class User {
@@ -17,7 +24,7 @@ export class User {
     this.giftId = giftId;
     this.secretSantaId = 1234567890;
     this.receiverId = receiverId;
-}
+    }
 }
 
 class DataService {
@@ -31,6 +38,17 @@ class DataService {
         let response: Response = await todoResponsePromise;
 
         let jsonPromise: Promise<Gift[]> = (response).json();
+
+        return await jsonPromise;
+    };
+
+    public async getGift(giftId: number): Promise<Gift> {
+
+        let todoResponsePromise: Promise<Response> = fetch(`${DataService.DB_URL}/gifts/${giftId}`);
+
+        let response: Response = await todoResponsePromise;
+
+        let jsonPromise: Promise<Gift> = (response).json();
 
         return await jsonPromise;
     };

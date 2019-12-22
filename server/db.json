@@ -49,8 +49,8 @@
     {
       "id": 2,
       "name": "Kate",
-      "giftId": 2,
-      "secretSantaId": 3,
+      "giftId": 3,
+      "secretSantaId": 1234567890,
       "receiverId": 1
     }
   ]
