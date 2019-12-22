@@ -40,14 +40,17 @@
       "receiverId": null
     },
     {
+      "id": 1,
       "name": "Anna",
-      "id": 1
+      "giftId": 1,
+      "secretSantaId": 2,
+      "receiverId": 1
     },
     {
       "id": 2,
       "name": "Kate",
       "giftId": 2,
-      "secretSantaId": 1234567890,
+      "secretSantaId": 3,
       "receiverId": 1
     }
   ]

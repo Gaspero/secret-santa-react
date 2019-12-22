@@ -4,11 +4,20 @@ export interface Gift {
     url: string;
 }
 
-export interface User {
+export class User {
     id: number;
     name: string;
-    desiredGiftId: number;
+    giftId: number;
     secretSantaId: number;
+    receiverId: number;
+
+    constructor(id: number, name: string, giftId: number, receiverId: number) {
+    this.id = id;
+    this.name = name;
+    this.giftId = giftId;
+    this.secretSantaId = 1234567890;
+    this.receiverId = receiverId;
+}
 }
 
 class DataService {
@@ -39,7 +48,7 @@ class DataService {
         return await jsonPromise;
     };
 
-    public async createUser(newUser: User): Promise<User[]> {
+    public async createUser(newUser: User): Promise<User> {
 
         delete newUser.id;
 
@@ -54,14 +63,14 @@ class DataService {
 
         let response: Response = await peopleResponsePromise;
 
-        let jsonPromise: Promise<User[]> = (response).json();
+        let jsonPromise: Promise<User> = (response).json();
 
         return await jsonPromise;
     };
 
-    public async updateUser(user: User, secretSantaId: number): Promise<User[]> {
+    public async updateUser(user: User): Promise<User> {
 
-        let secretSanta = {"secretSantaId": secretSantaId}
+        // let secretSanta = {"secretSantaId": secretSantaId}
 
         let peopleResponsePromise: Promise<Response> = fetch(`${DataService.DB_URL}/users/${user.id}`, {
             headers: {
@@ -69,12 +78,12 @@ class DataService {
                 'Content-Type': 'application/json'
             },
             method: "PUT",
-            body: JSON.stringify(secretSanta)
+            body: JSON.stringify(user)
         });
 
         let response: Response = await peopleResponsePromise;
 
-        let jsonPromise: Promise<User[]> = (response).json();
+        let jsonPromise: Promise<User> = (response).json();
 
         return await jsonPromise;
     };
